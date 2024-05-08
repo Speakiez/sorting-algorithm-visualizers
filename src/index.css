@@ -10,6 +10,10 @@
   margin: 0;
 }
 
+html {
+  font-family: "Public Sans", Arial, Helvetica, sans-serif;
+}
+
 #root {
   display: flex;
   align-items: center;
