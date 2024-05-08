@@ -1,11 +1,11 @@
-const numOfColumns = 75;
+import { useState } from "react";
 
-function Visualizer() {
-  const createColumns = Array(numOfColumns).fill(null).map((column, index) => {
-    let heightValue = index === 0 ? 2 : index * 5;
+function Visualizer({ columnArray }) {
+  const createColumns = columnArray.map(value => {
+    let columnHeight = value === 0 ? 2 : value * 5;
 
     return (
-      <li key={heightValue} className="column" style={{ height: `${heightValue}px` }}></li>
+      <li key={`column#${value}`} className="column" style={{ height: `${columnHeight}px` }}></li>
     );
   });
 
@@ -15,10 +15,15 @@ function Visualizer() {
 }
 
 export default function App() {
+  const [columnArray, setColumnArray] = useState(Array(75).fill(null).map((_value, index) => index));
+
   return (
-    <div id="app-content">
+    <div id="app">
       <h1>Sorting Algorithm Visualizers</h1>
-      <Visualizer />
+      <main id="content">
+        <button>Randomize</button>
+        <Visualizer columnArray={columnArray} />
+      </main>
     </div>
   );
 }
