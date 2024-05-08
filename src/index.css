@@ -1,0 +1,33 @@
+:root {
+  --background-color: #A6F8FF;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100vh;
+
+  background-size: 30px 30px;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.1) 2px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 2px, transparent 1px);
+  background-color: var(--background-color);
+}
+
+#app-content {
+  padding: 8px;
+  background-color: #FFFFFF;
+  border: 2px solid black;
+  box-shadow: 4px 4px 0 black;
+}
