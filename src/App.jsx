@@ -4,9 +4,7 @@ function Visualizer({ columnArray }) {
   const createColumns = columnArray.map(value => {
     let columnHeight = value === 0 ? 2 : value * 5;
 
-    return (
-      <li key={`column#${value}`} className="column" style={{ height: `${columnHeight}px` }}></li>
-    );
+    return <li key={`column#${value}`} className="column" style={{ height: `${columnHeight}px` }}></li>
   });
 
   return (
@@ -17,11 +15,28 @@ function Visualizer({ columnArray }) {
 export default function App() {
   const [columnArray, setColumnArray] = useState(Array(75).fill(null).map((_value, index) => index));
 
+  function randomizeColumns() {
+    let columnsCopy = columnArray.slice();
+    let m = columnsCopy.length;
+    let t;
+    let i;
+
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+
+      t = columnsCopy[m];
+      columnsCopy[m] = columnsCopy[i];
+      columnsCopy[i] = t;
+    }
+
+    setColumnArray(columnsCopy);
+  }
+
   return (
     <div id="app">
       <h1>Sorting Algorithm Visualizers</h1>
       <main id="content">
-        <button>Randomize</button>
+        <button onClick={randomizeColumns}>Randomize</button>
         <Visualizer columnArray={columnArray} />
       </main>
     </div>
