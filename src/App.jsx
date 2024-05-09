@@ -15,11 +15,9 @@ function Visualizer({ columnArray }) {
 export default function App() {
   const [columnArray, setColumnArray] = useState(Array(75).fill(null).map((_value, index) => index));
 
-  function randomizeColumns() {
+  function randomize() {
     let columnsCopy = columnArray.slice();
-    let m = columnsCopy.length;
-    let t;
-    let i;
+    let m = columnsCopy.length, t, i;
 
     while (m) {
       i = Math.floor(Math.random() * m--);
@@ -36,7 +34,7 @@ export default function App() {
     <div id="app">
       <h1>Sorting Algorithm Visualizers</h1>
       <main id="content">
-        <button onClick={randomizeColumns}>Randomize</button>
+        <button className="randomize-btn" onClick={randomize}>Randomize</button>
         <Visualizer columnArray={columnArray} />
       </main>
     </div>

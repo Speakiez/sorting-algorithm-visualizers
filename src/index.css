@@ -44,7 +44,7 @@ html {
   gap: 8px;
 }
 
-button {
+.randomize-btn {
   height: 50px;
   width: 100px;
   background-color: #444444;
@@ -54,7 +54,7 @@ button {
   cursor: pointer;
 }
 
-button:active {
+.randomize-btn:active {
   filter: invert(60%);
 }
 
