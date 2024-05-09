@@ -4,7 +4,13 @@ function Visualizer({ columnArray }) {
   const createColumns = columnArray.map(value => {
     let columnHeight = value === 0 ? 2 : value * 5;
 
-    return <li key={`column#${value}`} className="column" style={{ height: `${columnHeight}px` }}></li>
+    return (
+      <li 
+        key={`column#${value}`} 
+        className="column" 
+        style={{ height: `${columnHeight}px` }}
+      ></li>
+    );
   });
 
   return (
