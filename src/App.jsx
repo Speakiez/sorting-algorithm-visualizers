@@ -7,6 +7,7 @@ function Visualizer({ columnArray }) {
     return (
       <li 
         key={`column#${value}`} 
+        data-key={`column#${value}`}
         className="column" 
         style={{ height: `${columnHeight}px` }}
       ></li>
@@ -21,23 +22,41 @@ function Visualizer({ columnArray }) {
 export default function App() {
   const [columnArray, setColumnArray] = useState(Array(75).fill(null).map((_value, index) => index));
 
+  function reset() {
+    const columnsCopy = Array(75).fill(null).map((_value, index) => index);
+    
+    setColumnArray(columnsCopy);
+  }
+
   function randomize() {
+    // Fisher-Yates Shuffle
     const columnsCopy = columnArray.slice();
-    let m = columnsCopy.length, t, i;
+    let l = columnsCopy.length, i, j;
 
-    while (m) {
-      i = Math.floor(Math.random() * m--);
+    while (l) {
+      i = Math.floor(Math.random() * l--);
 
-      t = columnsCopy[m];
-      columnsCopy[m] = columnsCopy[i];
-      columnsCopy[i] = t;
+      j = columnsCopy[l];
+      columnsCopy[l] = columnsCopy[i];
+      columnsCopy[i] = j;
     }
 
     setColumnArray(columnsCopy);
   }
 
-  function reset() {
-    const columnsCopy = Array(75).fill(null).map((_value, index) => index);
+  function bubbleSort() {
+    const columnsCopy = columnArray.slice();
+
+    for (let i = 1; i < columnsCopy.length; i++) {
+      for (let j = 0; j < columnsCopy.length - 1; j++) {
+          let a = columnsCopy[j], b = columnsCopy[j + 1];
+
+          if (a > b) {
+          columnsCopy[j] = b;
+          columnsCopy[j + 1] = a;
+          } 
+      }
+    }
 
     setColumnArray(columnsCopy);
   }
@@ -49,7 +68,7 @@ export default function App() {
         <div className="btn-list">
           <button className="reset btn" onClick={reset}>Reset</button>
           <button className="randomize btn" onClick={randomize}>Randomize</button>
-          <button className="bubble btn">Bubble Sort</button>
+          <button className="bubble btn" onClick={bubbleSort}>Bubble Sort</button>
           <button className="selection btn">Selection Sort</button>
           <button className="insertion btn">Insertion Sort</button>
         </div>
