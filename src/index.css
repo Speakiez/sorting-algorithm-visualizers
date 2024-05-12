@@ -44,7 +44,13 @@ html {
   gap: 8px;
 }
 
-.randomize-btn {
+.btn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.btn {
   height: 50px;
   width: 100px;
   background-color: #444444;
@@ -54,7 +60,7 @@ html {
   cursor: pointer;
 }
 
-.randomize-btn:active {
+.btn:active {
   filter: invert(60%);
 }
 

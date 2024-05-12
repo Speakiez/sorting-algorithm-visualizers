@@ -38,11 +38,17 @@ export default function App() {
 
   return (
     <div id="app">
-      <h1>Sorting Algorithm Visualizers</h1>
-      <main id="content">
-        <button className="randomize-btn" onClick={randomize}>Randomize</button>
+      <h1>Sorting Algorithms Visualizer</h1>
+      <div id="content">
+        <div className="btn-list">
+          <button className="reset btn">Reset</button>
+          <button className="randomize btn" onClick={randomize}>Randomize</button>
+          <button className="bubble btn">Bubble Sort</button>
+          <button className="selection btn">Selection Sort</button>
+          <button className="insertion btn">Insertion Sort</button>
+        </div>
         <Visualizer columnArray={columnArray} />
-      </main>
+      </div>
     </div>
   );
 }
