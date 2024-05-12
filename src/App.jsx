@@ -22,7 +22,7 @@ export default function App() {
   const [columnArray, setColumnArray] = useState(Array(75).fill(null).map((_value, index) => index));
 
   function randomize() {
-    let columnsCopy = columnArray.slice();
+    const columnsCopy = columnArray.slice();
     let m = columnsCopy.length, t, i;
 
     while (m) {
@@ -36,12 +36,18 @@ export default function App() {
     setColumnArray(columnsCopy);
   }
 
+  function reset() {
+    const columnsCopy = Array(75).fill(null).map((_value, index) => index);
+
+    setColumnArray(columnsCopy);
+  }
+
   return (
     <div id="app">
       <h1>Sorting Algorithms Visualizer</h1>
       <div id="content">
         <div className="btn-list">
-          <button className="reset btn">Reset</button>
+          <button className="reset btn" onClick={reset}>Reset</button>
           <button className="randomize btn" onClick={randomize}>Randomize</button>
           <button className="bubble btn">Bubble Sort</button>
           <button className="selection btn">Selection Sort</button>
